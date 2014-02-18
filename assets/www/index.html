@@ -1,0 +1,141 @@
+<html xmlns:og="http://ogp.me/ns"
+	xmlns:fb="http://www.facebook.com/2008/fbml" lang="en">
+<head>
+<title>WELCOME</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+
+	<!-- This initializes the Facebook JS SDK. -->
+	<div id="fb-root"></div>
+
+	<div id="header">
+		<div id="back-link" onclick="openPage('root')">
+			<div id="back">&lt; Back</div>
+		</div>
+		<div id="title">Title</div>
+
+		<div id="right-block">
+
+			<!--This Show when user not login -->
+			
+			<div class="show_when_not_connected">
+				<a onclick="promptLogin()" class="login-button"> <span>Login</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div id="action">
+		<div id="loading-icon"></div>
+
+		<div id="msg"></div>
+	</div>
+
+	<!-- Page: Homepage -->
+
+	<div id="page-root" class="page">
+
+		<!--This Show when user login -->
+		
+		<div class="show_when_connected">
+			<div id="welcome">
+				<img id="user-picture" /><br /> <span id="user-name"></span>     <!-- Fetching user image and user name from facebook -->
+			</div>
+		</div>
+
+		<ul>
+			<li class="menu-item" onclick="openPage('Login');">Login</li>
+		</ul>
+
+
+	</div>
+
+
+
+	<!-- Page: Login-->
+	
+<div id="page-Login" class="page">
+	<div class="section">
+		<div class="show_when_not_connected">
+				<h1></h1>
+		</div>
+		<div class="show_when_connected">
+				<h1>Logging the user out</h1>
+		</div>
+
+		<div class="show_when_not_connected">
+				<div id="login_button" class="button" onclick="promptLogin()" />
+				Login using Facebook
+				</div>
+		</div>
+		<div class="show_when_connected">
+			<div id="login_button" class="button" onclick="logout()" />
+			Logout
+			</div>
+		</div>
+</div>
+
+
+
+	<!-- Page: Social Plugins -->
+	
+	<div id="page-Social-Plugins" class="page">
+
+
+		<div class="section">
+			<h1>Like button</h1>
+			<p>
+				<fb:like></fb:like>
+			</p>
+		</div>
+	</div>
+
+	<div id="deviceready"></div>
+
+<!-- Intialize cordova-2.2.0.js in javaScript -->
+
+	<script type="text/javascript" src="cordova-2.2.0.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	
+	<!-- cordova facebook plugin -->
+	
+	<script src="cdv-plugin-fb-connect.js"></script>
+	
+	<!-- facebook js sdk -->
+	
+	<script src="facebook-js-sdk.js"></script>
+
+	<!--<script src="js/_config.js"></script>-->
+	
+	<script src="js/ui.js"></script>
+	<script src="js/auth.js"></script>
+	<script src="js/feed.js"></script>
+	<script src="js/graph_api.js"></script>
+	<script src="js/requests.js"></script>
+	<!--<script src="js/credits.js"></script>-->
+
+	<script>
+		
+	// Initialize the Facebook SDK
+	
+		document.addEventListener('deviceready', function() {
+			FB.init({
+				appId : '150129068491462',
+				nativeInterface : CDV.FB,
+				useCachedDialogs : false
+			});
+
+			FB.getLoginStatus(handleStatusChange);
+
+			authUser();
+			updateAuthElements();
+		});
+	</script>
+
+</body>
+</html>
